@@ -1,35 +1,28 @@
-import React, { Component } from 'react';
-import SearchBar from './searchBar';
-import SearchResults from './searchResults';
-import Playlist from './playlist';
-import './app.css'; // Assuming you have some CSS for basic styling
+import React, { Component,useState }  from 'react';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
+import Playlist from '../PlayList/Playlist';
+import './App.css'; // Assuming you have some CSS for basic styling
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchResults: [],
-      playlistName: 'My Playlist',
-      playlistTracks: []
-    };
-  }
 
-  // Methods to update state, interact with Spotify API would go here
+function App() {
+  const [searchResults, setSearchResults] = useState([
+      {id: 1, name: "Tiny Dancer", artist: "Elton John", album: "Madman Across The Water"},
+      {id: 2, name: "Sultans of Swing", artist: "Dire Straits", album: "Dire Straits"},
+      {id: 3, name: "Fear of the Dark", artist: "Iron Maiden", album: "Fear of the Dark"}
+  ]);
 
-  render() {
-    return (
+  return (
       <div className="App">
-        <h1>Ja<span className="highlight">mmm</span>ing</h1>
-        <div className="App-playlist">
-          <SearchBar onSearch={this.handleSearch} />
-          <div className="App-music">
-            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onSave={this.savePlaylist} />
+          <h1>Ja<span className="highlight">mmm</span>ing</h1>
+          <SearchBar />
+          <div className="App-playlist">
+              <SearchResults searchResults={searchResults} />
+              <Playlist />
           </div>
-        </div>
       </div>
-    );
-  }
+  );
 }
+
 
 export default App;
