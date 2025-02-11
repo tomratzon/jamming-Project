@@ -3,11 +3,15 @@ import TrackList from '../TrackList/TrackList';
 import './SearchResults.css';
 
 //receive searchResult object
-function SearchResults({ searchResults }) {
+function SearchResults({ searchResults, onAdd }) {
+  console.log(onAdd);
   return (
       <div className="SearchResults">
           <h2>Results</h2>
-          <TrackList tracks={searchResults} />
+          <TrackList 
+              tracks={searchResults} 
+              onAdd={onAdd} 
+              isRemoval={false} />
       </div>
   );
 }

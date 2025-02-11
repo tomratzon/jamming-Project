@@ -2,16 +2,14 @@ import React from 'react';
 import TrackList from '../TrackList/TrackList';
 import './Playlist.css';
 
-function Playlist() {
-  const mockTracks = [
-    {id: 3, name: "Song3", artist: "Artist3", album: "Album3"},
-    {id: 4, name: "Song4", artist: "Artist4", album: "Album4"}
-  ];
-
+function Playlist({playlistName,playlistTracks,onNameChange,onRemove}) {
+  const handleNameChange=(e)=>{
+    onNameChange(e.target.value);
+  }
   return (
     <div className="Playlist">
-      <input defaultValue={'New Playlist'}/>
-      <TrackList tracks={mockTracks} />
+      <input value={playlistName} onChange={handleNameChange} />
+      <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true} />
       <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>
   );
