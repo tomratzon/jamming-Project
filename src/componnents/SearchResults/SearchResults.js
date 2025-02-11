@@ -2,7 +2,7 @@ import React from 'react';
 import TrackList from '../TrackList/TrackList';
 import './SearchResults.css';
 
-
+//receive searchResult object
 function SearchResults({ searchResults }) {
   return (
       <div className="SearchResults">
