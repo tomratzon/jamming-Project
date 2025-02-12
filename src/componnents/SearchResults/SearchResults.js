@@ -6,7 +6,7 @@ import './SearchResults.css';
 function SearchResults({ searchResults, onAdd }) {
   return (
       <div className="SearchResults">
-          <h2>Results</h2>
+          <div className="ResultsHead"><h2>Results</h2></div>
           <TrackList 
               tracks={searchResults} 
               onAdd={onAdd} 

@@ -45,7 +45,55 @@ const Spotify = {
         uri: track.uri
       }));
     });
-  }
+  },
+  getUserId() {
+    const accessToken = this.getAccessToken();
+    const headers = { Authorization: `Bearer ${accessToken}` };
+    return fetch('https://api.spotify.com/v1/me', { headers: headers })
+      .then(response => response.json())
+      .then(jsonResponse => {
+        return jsonResponse.id;
+      });
+  },
+  createPlaylist(userId, name) {
+    const accessToken = this.getAccessToken();
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    };
+    const body = JSON.stringify({ name: name });
+    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+      headers: headers,
+      method: 'POST',
+      body: body
+    }).then(response => response.json())
+      .then(jsonResponse => {
+        return jsonResponse.id;
+      });
+  },
+  savePlaylistTracks(playlistId, trackUris) {
+    const accessToken = this.getAccessToken();
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    };
+    const body = JSON.stringify({ uris: trackUris });
+    return fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+      headers: headers,
+      method: 'POST',
+      body: body
+    }).then(response => response.json());
+  },
+  savePlaylist(name, trackUris) {
+    if (!name || !trackUris.length) {
+        return Promise.reject("Playlist name or tracks missing");
+    }
+    return this.getUserId()  // Ensure to return this Promise
+        .then(userId => this.createPlaylist(userId, name))
+        .then(playlistId => this.savePlaylistTracks(playlistId, trackUris));
+}
 };
+
+
 
 export default Spotify;

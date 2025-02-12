@@ -17,9 +17,7 @@ function App() {
   };
   //playlistName state decluration
   const [playlistName, setPlaylistName] = useState("My Playlist");
-  const [playlistTracks, setPlaylistTracks] = useState([{ id: 4, name: "Imagine", artist: "John Lennon", album: "Imagine" },
-    { id: 5, name: "The Chain", artist: "Fleetwood Mac", album: "Rumours" }
-  ]);
+  const [playlistTracks, setPlaylistTracks] = useState([]);
   const addTrack= (track)=>{ //add track into playlistTracks if isn't there already
     const trackAlreadyExist = playlistTracks.find(pTrack => pTrack.id === track.id);
     if(!trackAlreadyExist){
@@ -33,13 +31,16 @@ function App() {
   const updatePlaylistName= (name)=>{
     setPlaylistName(name);
   };
-  const savePlaylist=()=>{
+  const savePlaylist = () => {
     const trackUris = playlistTracks.map(track => track.uri);
-    Spotify.getAccessToken();
-    Spotify.savePlaylist(playlistName, trackUris).then(() => {
-      setPlaylistName('New Playlist');
-      setPlaylistTracks([]); //reset playlist
-    });
+    Spotify.savePlaylist(playlistName, trackUris)
+      .then(() => {
+        setPlaylistName('New Playlist');
+        setPlaylistTracks([]);
+      })
+      .catch(error => {
+        console.error('Error saving the playlist:', error);
+      });
   };
   
 
@@ -50,17 +51,19 @@ function App() {
 //  playlist 
   return (
     <div className="App">
-    <h1>Ja<span className="highlight">mmm</span>ing</h1> 
-    <SearchBar onSearch={search}/>
-    <div className="App-playlist">
-      <SearchResults searchResults={searchResults} onAdd={addTrack} />
-      <Playlist 
+      <div className="Search-container">
+        <h1>Ja<span className="highlight">mmm</span>ing</h1> 
+        <SearchBar onSearch={search}/>
+        <SearchResults searchResults={searchResults} onAdd={addTrack} />
+      </div>
+      <div className="App-playlist">
+        <Playlist 
           playlistName={playlistName} 
           playlistTracks={playlistTracks} 
           onNameChange={updatePlaylistName} 
           onRemove={removeTrack}
           onSave={savePlaylist}
-      />
+        />
     </div>
   </div>
   );

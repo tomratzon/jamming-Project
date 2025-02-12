@@ -1,0 +1,31 @@
+/* Track.css */
+.Track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.Track-information h3 {
+    margin: 0;
+}
+
+.Track-information p {
+    margin: 5px 0;
+    color: #666666;
+}
+
+.Track-action {
+    background-color: #0073e6; /* Blue */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.Track-action:hover {
+    background-color: #0056b3; /* Darker Blue */
+}

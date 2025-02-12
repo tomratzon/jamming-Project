@@ -1,0 +1,11 @@
+/* SearchResults.css */
+.SearchResults {
+    width: 40%;
+}
+
+.SearchResults h3 {
+    color: #050708; /* Blue */
+}
+.ResultsHead{
+    margin-bottom: 50px;
+}
