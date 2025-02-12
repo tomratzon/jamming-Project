@@ -2,7 +2,7 @@ import React from 'react';
 import Track from '../Track/Track';
 import './TrackList.css';
 //receive array of track objects, a boolean and function object
-function TrackList({tracks=[], onAdd, isRemoval}) {
+function TrackList({tracks, onAdd,onRemove, isRemoval}) {
    
   return (
       <div className="TrackList">
@@ -11,7 +11,8 @@ function TrackList({tracks=[], onAdd, isRemoval}) {
                     key={track.id} 
                     track={track}
                     onAdd={onAdd}
-                    isRemoval={isRemoval} />
+                    onRemove={onRemove}
+                    isRemoval={isRemoval}/>
           ))}
       </div>
   );

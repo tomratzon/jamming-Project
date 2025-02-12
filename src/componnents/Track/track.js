@@ -1,7 +1,18 @@
 import React from 'react';
 import './Track.css';
 //receive track object
-function Track({ track,onAdd,isRemoval}) {
+function Track({ track,onAdd,onRemove,isRemoval}) {
+    const handleAction=()=>{
+        if(isRemoval){
+            onRemove(track);
+        }
+        else{
+            onAdd(track);
+        }
+    }
+    
+    
+    
     const addTrack = () => {
         onAdd(track);
       };
@@ -14,7 +25,7 @@ function Track({ track,onAdd,isRemoval}) {
           </div>
           <button 
                 className="Track-action"
-                onClick={addTrack}>
+                onClick={handleAction}>
             {isRemoval? '-':'+'}
             </button>
       </div>

@@ -4,7 +4,6 @@ import './SearchResults.css';
 
 //receive searchResult object
 function SearchResults({ searchResults, onAdd }) {
-  console.log(onAdd);
   return (
       <div className="SearchResults">
           <h2>Results</h2>
