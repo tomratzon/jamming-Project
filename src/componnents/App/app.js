@@ -11,21 +11,27 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   //playlistName state decluration
-  const [playlistName, setPlaylistName] = useState("My Playlist");
-  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playlistName, setPlaylistName] = useState(localStorage.getItem('playlistName') || "My Playlist");
+  const [playlistTracks, setPlaylistTracks] = useState(JSON.parse(localStorage.getItem('playlistTracks')) || []);
 
   const [isLoading, setIsLoading] = useState(false); //used for implemanting loading
 
-  
+  useEffect(() => { //allow to save playlist state while refreshing the page
+    localStorage.setItem('playlistName', playlistName);
+    localStorage.setItem('playlistTracks', JSON.stringify(playlistTracks));
+  }, [playlistName, playlistTracks]); 
+
+  useEffect(() => {
+  filterSearchResults();
+  } , [playlistTracks, searchResults]);
+
   const filterSearchResults = () => {
     const filtered = searchResults.filter(searchTrack =>
         !playlistTracks.find(playlistTrack => playlistTrack.id === searchTrack.id));
     setFilteredResults(filtered);
   };
+
   
-  useEffect(() => {
-    filterSearchResults();
-  } , [playlistTracks, searchResults]);
 
 
   const search = (track) => {
