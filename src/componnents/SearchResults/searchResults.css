@@ -1,11 +1,29 @@
-/* SearchResults.css */
 .SearchResults {
-    width: 40%;
+    width: 100%;
+    max-width: 960px;  /* Match the search bar width */
+    margin: 20px auto;
+    display: inline-block;
 }
 
-.SearchResults h3 {
-    color: #050708; /* Blue */
+.Track {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;  /* Slightly lighter line for separation */
+    padding: 10px 0;
 }
-.ResultsHead{
-    margin-bottom: 50px;
+
+.Track h3, .Track p {
+    margin: 5px 0;
+}
+
+.Track-action {
+    background-color: #ff4500;  /* Orange */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.Track-action:hover {
+    background-color: #cc3700;  /* Darker orange */
 }

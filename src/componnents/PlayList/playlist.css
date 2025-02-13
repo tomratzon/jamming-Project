@@ -1,18 +1,4 @@
-/* Playlist.css */
-.Playlist {
-    width: 100%;
-    text-align: left;
-   
-}
 
-.Playlist-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 2px solid #ff4500; /* Orange */
-    color: #0073e6; /* Blue */
-    background: none;
-}
 .playlistName input {
     width: 300px;
     padding: 10px;
@@ -20,22 +6,38 @@
     margin-bottom: 30px;
     border: 1px solid #ff4500; /* Orange */
     border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
-.Playlist h2{
-    padding-bottom: 20px;
-}
-.Playlist-save {
-    display: block;
+.Playlist {
     width: 100%;
-    padding: 10px;
-    background-color: #ff4500; /* Orange */
+    max-width: 960px;  /* Match the other components */
+    margin: 20px auto;
+    background-color: #f1efef;  /* Slightly lighter than body for visibility */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.Playlist-title {
+    font-size: 24px;
+    border: none;
+    color: #ff4500;  /* Orange */
+    background: none;
+    width: 100%;
+    text-align: center;
+}
+
+.Playlist-save {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #0073e6;  /* Blue */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+    font-size: 16px;
 }
 
 .Playlist-save:hover {
-    background-color: #e63e00; /* Darker Orange */
+    background-color: #005fa3;  /* Darker blue */
 }

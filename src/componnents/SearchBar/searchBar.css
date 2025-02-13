@@ -1,27 +1,30 @@
-/* SearchBar.css */
 .SearchBar {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 960px;  /* Limit max width for larger screens */
     display: flex;
-    justify-content: left;
-    margin-bottom: 20px;
+    justify-content: center;
 }
 
 .SearchBar input {
-    width: 300px;
+    flex-grow: 1;
     padding: 10px;
     margin-right: 10px;
-    border: 1px solid #ff4500; /* Orange */
-    border-radius: 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
 }
 
 .SearchButton {
     padding: 10px 20px;
-    background-color: #ff4500; /* Orange */
+    background-color: #0073e6;  /* Blue */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .SearchButton:hover {
-    background-color: #e63e00; /* Darker Orange */
+    background-color: #005fa3;  /* Darker blue */
 }
